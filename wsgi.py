@@ -8,10 +8,10 @@ application = Flask(__name__)
 def hello():
     
     hello_string = "Hello World! Greetings from "+socket.gethostname()+"\n"
-    hello_string += "/mnt/ content: " + str(os.listdir("mnt")) + "\n"
-    hello_string += "rollback complete"
+    #hello_string += "/mnt/ content: " + str(os.listdir("mnt")) + "\n"
+    hello_string += "something aint quite right here"
 
-    return "Hello World! Greetings from "+socket.gethostname()+"\n" + "something went wrong"
+    return hello_string
 
 
 if __name__ == "__main__":
