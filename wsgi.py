@@ -11,7 +11,7 @@ def hello():
 	#hello_string += "/mnt/ content: " + os.listdir("mnt")
 	hello_string += "rollback complete"
 
-    return hello_string
+    return "Hello World! Greetings from "+socket.gethostname()+"\n" + "something went wrong"
 
 
 if __name__ == "__main__":
