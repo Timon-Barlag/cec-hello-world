@@ -1,5 +1,5 @@
 import socket
-import os
+#import os
 from flask import Flask
 
 application = Flask(__name__)
@@ -8,7 +8,9 @@ application = Flask(__name__)
 def hello():
     
 	hello_string = "Hello World! Greetings from "+socket.gethostname()+"\n"
-	hello_string += "/mnt/ content: " + os.listdir("mnt")
+	#hello_string += "/mnt/ content: " + os.listdir("mnt")
+	hello_string += "rollback complete"
+
     return hello_string
 
 
