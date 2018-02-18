@@ -25,6 +25,11 @@ def hello():
     #file = open("/mnt/my_log.log", "w")
     #file.write("host: ",hostname, "time: ",timestamp)
 
+    with open("/mnt/my_log.log") as f:
+    	content = f.read()
+
+    hello_string += content
+
     return hello_string
 
 
