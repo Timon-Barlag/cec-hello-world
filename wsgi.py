@@ -22,8 +22,8 @@ def hello():
 
     timestamp = time.time()
 
-    file = open("/mnt/my_log.log", "w")
-    file.write("host: ",hostname, "time: ",timestamp)
+    #file = open("/mnt/my_log.log", "w")
+    #file.write("host: ",hostname, "time: ",timestamp)
 
     return hello_string
 
