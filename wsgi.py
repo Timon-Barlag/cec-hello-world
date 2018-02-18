@@ -1,5 +1,6 @@
 import socket
 import os
+import time
 from flask import Flask
 
 application = Flask(__name__)
@@ -7,7 +8,9 @@ application = Flask(__name__)
 @application.route("/")
 def hello():
     
-    hello_string = "Hello World! Greetings from "+socket.gethostname()+"\n"
+    hostname = socket.gethostname()
+
+    hello_string = "Hello World! Greetings from " + hostname + "\n"
     #hello_string += "/mnt/ content: " + str(os.listdir("mnt")) + "\n"
     if os.path.exists("/mnt"):
     	hello_string += "mnt content: " + str(os.listdir("/mnt")) + "\n"
@@ -15,7 +18,12 @@ def hello():
     	hello_string += "no mnt dir found\n"
     	hello_string += str(next(os.walk('.'))[1])
 
-    hello_string += "_________"
+    #hello_string += "_________"
+
+    timestamp = time.time()
+
+    file = open("/mnt/my_log.log", "w")
+    file.write("host: ",hostname, "time: ",timestamp)
 
     return hello_string
 
