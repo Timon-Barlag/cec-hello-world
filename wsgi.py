@@ -1,4 +1,5 @@
 import socket
+#import os
 from flask import Flask
 
 application = Flask(__name__)
@@ -6,7 +7,11 @@ application = Flask(__name__)
 @application.route("/")
 def hello():
     
-    return "Hello World! Greetings from "+socket.gethostname()+"\n" + "code change"
+    hello_string = "Hello World! Greetings from "+socket.gethostname()+"\n"
+    hello_string += "/mnt/ content: " + str(os.listdir("mnt")) + "\n"
+    hello_string += "rollback complete"
+
+    return "Hello World! Greetings from "+socket.gethostname()+"\n" + "something went wrong"
 
 
 if __name__ == "__main__":
