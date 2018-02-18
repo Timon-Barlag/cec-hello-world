@@ -9,7 +9,13 @@ def hello():
     
     hello_string = "Hello World! Greetings from "+socket.gethostname()+"\n"
     #hello_string += "/mnt/ content: " + str(os.listdir("mnt")) + "\n"
-    hello_string += "something aint quite right here"
+    if os.path.exists("mnt2"):
+    	hello_string += "mnt2 content: " + str(os.listdir("mnt")) + "\n"
+    else:
+    	hello_string += "no mnt2 dir found\n"
+    	hello_string += str(next(os.walk('.'))[1])
+
+    hello_string += "_________"
 
     return hello_string
 
