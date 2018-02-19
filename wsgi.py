@@ -13,10 +13,10 @@ def hello():
     hello_string = "Hello World! Greetings from " + hostname + "\n"
     #hello_string += "/mnt/ content: " + str(os.listdir("mnt")) + "\n"
     if os.path.exists("/mnt"):
-    	hello_string += "mnt content: " + str(os.listdir("/mnt")) + "\n"
+        hello_string += "mnt content: " + str(os.listdir("/mnt")) + "\n"
     else:
-    	hello_string += "no mnt dir found\n"
-    	hello_string += str(next(os.walk('.'))[1])
+        hello_string += "no mnt dir found\n"
+        hello_string += str(next(os.walk('.'))[1])
 
     #hello_string += "_________"
 
@@ -24,11 +24,11 @@ def hello():
 
     #file = open("/mnt/my_log.log", "w")
     #file.write("host: ",hostname, "time: ",timestamp)
+    if os.path.exists("/mnt/my_log.log"):
+        with open("/mnt/my_log.log") as f:
+            content = f.read()
 
-    with open("/mnt/my_log.log") as f:
-    	content = f.read()
-
-    hello_string += " conent:_" + content + "_end content" 
+        hello_string += " conent:_" + content + "_end content" 
 
     return hello_string
 
