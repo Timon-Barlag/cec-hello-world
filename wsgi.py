@@ -11,7 +11,7 @@ def hello():
     if socket.gethostname().startswith("cec-hello-world"):
         write_path = "/mnt/"
     else:
-    	write_path = "."
+        write_path = "/home/t/Desktop/tmp/tmp2/"
 
 
     hostname = socket.gethostname()
@@ -32,8 +32,9 @@ def hello():
     #file.write("host: ",hostname, "time: ",timestamp)
     if os.path.exists(write_path + "my_log.log"):
         with open(write_path + "my_log.log") as f:
+            content = ""
             for line in f:
-            	content += "<p>" + line + "</p>\n"
+                content += "<p>" + line + "</p>\n"
             #content = f.read()
 
         hello_string += " content:_" + content + "_end content" 
