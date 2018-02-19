@@ -8,14 +8,20 @@ application = Flask(__name__)
 @application.route("/")
 def hello():
     
+    if socket.gethostname().startswith("cec-hello-world"):
+        write_path = "/mnt/"
+    else:
+    	write_path = "."
+
+
     hostname = socket.gethostname()
 
     hello_string = "Hello World! Greetings from " + hostname + "\n"
     #hello_string += "/mnt/ content: " + str(os.listdir("mnt")) + "\n"
-    if os.path.exists("/mnt"):
-        hello_string += "mnt content: " + str(os.listdir("/mnt")) + "\n"
+    if os.path.exists(write_path):
+        hello_string += "<p>dir content: " + str(os.listdir(write_path)) + "</p>\n"
     else:
-        hello_string += "no mnt dir found\n"
+        hello_string += "<p>dir not found</p>\n"
         hello_string += str(next(os.walk('.'))[1])
 
     #hello_string += "_________"
@@ -24,11 +30,13 @@ def hello():
 
     #file = open("/mnt/my_log.log", "w")
     #file.write("host: ",hostname, "time: ",timestamp)
-    if os.path.exists("/mnt/my_log.log"):
-        with open("/mnt/my_log.log") as f:
-            content = f.read()
+    if os.path.exists(write_path + "my_log.log"):
+        with open(write_path + "my_log.log") as f:
+            for line in f:
+            	content += "<p>" + line + "</p>\n"
+            #content = f.read()
 
-        hello_string += " conent:_" + content + "_end content" 
+        hello_string += " content:_" + content + "_end content" 
 
     return hello_string
 
