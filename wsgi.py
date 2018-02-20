@@ -8,7 +8,7 @@ application = Flask(__name__)
 @application.route("/")
 def hello():
     
-    WRITE_TO_LOG = False
+    WRITE_TO_LOG = True
 
     if socket.gethostname().startswith("cec-hello-world"):
         write_path = "/mnt/"
