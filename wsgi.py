@@ -8,7 +8,7 @@ application = Flask(__name__)
 @application.route("/")
 def hello():
     
-    WRITE_TO_LOG = True	      #specify whether or not to write to log file
+    WRITE_TO_LOG = True       #specify whether or not to write to log file
 
     hostname = socket.gethostname()
 
@@ -28,7 +28,7 @@ def hello():
         hello_string += "<p>" + write_path + " not foudn</p>\n"
         hello_string += str(next(os.walk('.'))[1])
 
-    timestamp = time.time()
+    timestamp = time.ctime(time.time())
 
 
     #write to log if specified
@@ -41,7 +41,7 @@ def hello():
         content = ""
         with open(write_path + "my_log.log") as f:
             for line in f:
-                content += line.replace("\n", "") + "<br>\n"	
+                content += line.replace("\n", "") + "<br>\n"
 
         hello_string += "<p>content:</p>\n" + content + "<p>end content</p>\n" 
     else:
