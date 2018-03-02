@@ -12,11 +12,7 @@ def hello():
 
     hostname = socket.gethostname()
 
-    #specify write path, depending on whether on cec-hello-world or not
-    if hostname.startswith("cec-hello-world"):
-        write_path = "/mnt/"
-    else:
-        write_path = "/home/t/Desktop/tmp/tmp2/"
+    write_path = "/mnt/"
 
     hello_string = "Hello World! Greetings from " + hostname + "\n"
 
@@ -25,7 +21,7 @@ def hello():
     if os.path.exists(write_path):
         hello_string += "<p>" + write_path + " content: " + str(os.listdir(write_path)) + "</p>\n"
     else:
-        hello_string += "<p>" + write_path + " not foudn</p>\n"
+        hello_string += "<p>" + write_path + " not found</p>\n"
         hello_string += str(next(os.walk('.'))[1])
 
     timestamp = time.ctime(time.time())
@@ -43,7 +39,7 @@ def hello():
             for line in f:
                 content += line.replace("\n", "") + "<br>\n"
 
-        hello_string += "<p>content:</p>\n" + content + "<p>end content</p>\n" 
+        hello_string += "<p>my_log.log content:</p>\n" + content 
     else:
         hello_string += "<p>logfile not found</p>\n"
 
